@@ -7,6 +7,7 @@ import { Gallery } from "@/components/landing/Gallery";
 import { Reviews } from "@/components/landing/Reviews";
 import { Contact } from "@/components/landing/Contact";
 import { Stars } from "@/components/landing/shared";
+import { BrandBanner, FlyerPoster } from "@/components/landing/BrandAssets";
 import { NAV_ITEMS, SITE } from "@/lib/site";
 import logo from "@/assets/logo.svg";
 
@@ -33,17 +34,17 @@ function GaugeSvg() {
   return (
     <svg viewBox="0 0 320 205" className="mt-3 w-full" role="img" aria-label="Velocímetro decorativo">
       {/* pista */}
-      <path d={arcPath} fill="none" stroke="#e2e8f0" strokeWidth={16} strokeLinecap="round" />
+      <path d={arcPath} fill="none" stroke="#334155" strokeWidth={16} strokeLinecap="round" />
       {/* zona de límite */}
-      <path d={redlinePath} fill="none" stroke="#e11d2e" strokeWidth={16} strokeLinecap="round" />
+      <path d={redlinePath} fill="none" stroke="#ef4444" strokeWidth={16} strokeLinecap="round" />
       {/* recorrido de la aguja */}
       <motion.path
         d={arcPath}
         fill="none"
-        stroke="#0f172a"
+        stroke="#e2e8f0"
         strokeWidth={16}
         strokeLinecap="round"
-        opacity={0.9}
+        opacity={0.92}
         initial={{ pathLength: 0 }}
         whileInView={{ pathLength: 0.72 }}
         viewport={{ once: true, amount: 0.4 }}
@@ -61,7 +62,7 @@ function GaugeSvg() {
               y1={outer.y}
               x2={inner.x}
               y2={inner.y}
-              stroke={angle < 30 ? "#e11d2e" : "#94a3b8"}
+              stroke={angle < 30 ? "#ef4444" : "#94a3b8"}
             />
           );
         })}
@@ -72,12 +73,12 @@ function GaugeSvg() {
         y1={CY}
         x2={needleTip.x}
         y2={needleTip.y}
-        stroke="#e11d2e"
+        stroke="#ef4444"
         strokeWidth={7}
         strokeLinecap="round"
       />
-      <circle cx={CX} cy={CY} r={13} fill="#ffffff" stroke="#e11d2e" strokeWidth={5} />
-      <circle cx={CX} cy={CY} r={3.5} fill="#e11d2e" />
+      <circle cx={CX} cy={CY} r={13} fill="#f8fafc" stroke="#ef4444" strokeWidth={5} />
+      <circle cx={CX} cy={CY} r={3.5} fill="#ef4444" />
     </svg>
   );
 }
@@ -87,12 +88,12 @@ function GaugeCard() {
     <div className="relative mx-auto w-full max-w-md lg:max-w-none">
       <div
         aria-hidden
-        className="absolute inset-0 translate-x-3 translate-y-3 rounded-[2rem] border border-white/70 bg-white/30 backdrop-blur-sm"
+        className="absolute inset-0 translate-x-3 translate-y-3 rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-sm"
       />
       <div className="relative overflow-hidden rounded-[2rem] glass p-6 md:p-8">
-        <div className="flex items-center justify-between font-display text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground">
-          <span>Mecánica Waly</span>
-          <span className="text-brand">Berisso</span>
+        <div className="flex items-center justify-between font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-muted-foreground">
+          <span>MECÁNICA WALY</span>
+          <span className="text-brand">BERISSO</span>
         </div>
 
         <GaugeSvg />
@@ -105,21 +106,21 @@ function GaugeCard() {
           {["Suspensión", "Frenos", "Embrague", "Inyección"].map((item) => (
             <span
               key={item}
-              className="rounded-full border border-white/80 bg-white/65 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-foreground/80"
+              className="rounded-full border border-white/15 bg-white/10 px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-wider text-foreground/85"
             >
               {item}
             </span>
           ))}
         </div>
 
-        <div className="mt-6 flex items-center justify-between gap-3 rounded-2xl border border-white/80 bg-white/65 px-4 py-3">
+        <div className="mt-6 flex items-center justify-between gap-3 rounded-2xl border border-white/15 bg-white/10 px-4 py-3">
           <span className="flex items-center gap-2">
             <Stars rating={SITE.rating} starClassName="size-4" />
             <span className="text-sm font-semibold text-foreground">
               {SITE.ratingLabel} <span className="font-normal text-muted-foreground">en Google</span>
             </span>
           </span>
-          <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+          <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
             {SITE.reviewCount} reseñas
           </span>
         </div>
@@ -137,7 +138,7 @@ function Header() {
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-4">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 rounded-2xl px-3 md:px-5 glass-strong">
         <a href="#top" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <img src={logo} alt="Mecánica Waly" className="size-9 rounded-[10px] shadow-sm" />
+          <img src={logo} alt="Mecánica Waly" className="size-9 rounded-[10px] ring-1 ring-white/15 shadow-sm" />
           <span className="font-display text-lg font-bold uppercase leading-none tracking-wide text-foreground">
             Mecánica <span className="text-brand">Waly</span>
           </span>
@@ -148,7 +149,7 @@ function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-lg px-3 py-2 font-display text-[15px] font-semibold uppercase tracking-wide text-foreground/75 transition hover:bg-white/70 hover:text-brand"
+              className="rounded-lg px-3 py-2 font-display text-[15px] font-semibold uppercase tracking-wide text-foreground/80 transition hover:bg-white/10 hover:text-brand"
             >
               {item.label}
             </a>
@@ -171,7 +172,7 @@ function Header() {
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="grid size-9 place-items-center rounded-xl border border-white/80 bg-white/70 text-foreground transition hover:bg-white md:hidden"
+            className="grid size-9 place-items-center rounded-xl border border-white/15 bg-white/10 text-foreground transition hover:bg-white/20 md:hidden"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
@@ -186,20 +187,25 @@ function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-3 py-2.5 font-display text-base font-semibold uppercase tracking-wide text-foreground/80 transition hover:bg-white/70 hover:text-brand"
+                className="rounded-xl px-3 py-2.5 font-display text-base font-semibold uppercase tracking-wide text-foreground/85 transition hover:bg-white/10 hover:text-brand"
               >
                 {item.label}
               </a>
             ))}
           </nav>
-          <div className="mt-2 grid gap-2 border-t border-white/70 pt-3">
+          <div className="mt-2 grid gap-2 border-t border-white/10 pt-3">
             <Button asChild size="sm" className="rounded-full font-semibold">
               <a href={SITE.whatsappUrl} target="_blank" rel="noreferrer">
                 <MessageCircle className="size-4" />
                 Escribir por WhatsApp
               </a>
             </Button>
-            <Button asChild variant="outline" size="sm" className="rounded-full bg-white/70 font-semibold">
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="rounded-full border-white/20 bg-white/10 font-semibold hover:bg-white/20"
+            >
               <a href={`tel:${SITE.phoneTel}`}>
                 <Phone className="size-4" />
                 {SITE.phoneDisplay}
@@ -220,11 +226,11 @@ function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/80 bg-white/65 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-foreground/80 backdrop-blur">
+            <span className="inline-flex items-center gap-1.5 rounded-md border border-white/15 bg-white/10 px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-foreground/85">
               <MapPin className="size-3.5 text-brand" />
               {SITE.city}
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/80 bg-white/65 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-foreground/80 backdrop-blur">
+            <span className="inline-flex items-center gap-1.5 rounded-md border border-white/15 bg-white/10 px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-foreground/85">
               <Car className="size-3.5 text-brand" />
               Todas las marcas
             </span>
@@ -240,8 +246,8 @@ function Hero() {
             {SITE.tagline}
           </p>
           <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Taller especializado en suspensión, frenos, embrague e inyección electrónica.
-            Atendemos todas las marcas.
+            Diagnóstico y reparación de suspensión, frenos, embrague e inyección electrónica.
+            Trabajamos todas las marcas y te explicamos qué necesita el auto antes de tocar nada.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -259,7 +265,7 @@ function Hero() {
               asChild
               variant="outline"
               size="lg"
-              className="h-12 rounded-full border-white/80 bg-white/65 px-7 font-semibold hover:bg-white"
+              className="h-12 rounded-full border-white/20 bg-white/10 px-7 font-semibold hover:bg-white/20"
             >
               <a href={`tel:${SITE.phoneTel}`}>
                 <Phone className="size-5" />
@@ -282,7 +288,7 @@ function Hero() {
               </span>
             </a>
             <span aria-hidden className="hidden h-4 w-px bg-border sm:block" />
-            <span className="flex items-center gap-1.5">
+            <span className="flex items-center gap-1.5 font-mono text-[13px]">
               <Clock className="size-4 text-brand" />
               {SITE.hoursShort}
             </span>
@@ -302,17 +308,19 @@ const TICKER_ITEMS = [
   "Frenos",
   "Embrague",
   "Inyección electrónica",
+  "Distribución",
+  "Mecánica en general",
   "Todas las marcas",
 ];
 
 function Ticker() {
   return (
-    <div className="relative overflow-hidden border-y border-white/70 bg-white/50 py-3 backdrop-blur-md">
+    <div className="relative overflow-hidden border-y border-white/10 bg-white/5 py-3 backdrop-blur-md">
       <div className="ticker-track flex w-max items-center gap-8 whitespace-nowrap">
         {[0, 1].map((copy) =>
           TICKER_ITEMS.map((item) => (
             <span key={`${copy}-${item}`} className="flex items-center gap-8">
-              <span className="font-display text-sm font-bold uppercase tracking-[0.28em] text-foreground/80 md:text-base">
+              <span className="font-display text-sm font-bold uppercase tracking-[0.28em] text-foreground/85 md:text-base">
                 {item}
               </span>
               <span className="size-1.5 rotate-45 bg-brand" aria-hidden />
@@ -332,29 +340,32 @@ function CtaBand() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] px-6 py-10 text-center md:px-12 md:py-14 glass-strong"
+        className="relative mx-auto grid max-w-6xl items-center gap-8 overflow-hidden rounded-[2rem] px-6 py-10 md:grid-cols-[1fr_auto] md:px-12 md:py-14 glass-strong"
       >
         <div
           aria-hidden
-          className="absolute -left-20 -top-24 size-64 rounded-full bg-brand/15 blur-3xl"
+          className="absolute -left-20 -top-24 size-64 rounded-full bg-brand/20 blur-3xl"
         />
         <div
           aria-hidden
-          className="absolute -bottom-24 -right-16 size-64 rounded-full bg-sky-300/40 blur-3xl"
+          className="absolute -bottom-24 -right-16 size-64 rounded-full bg-cyan-400/20 blur-3xl"
         />
 
         <div className="relative">
-          <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-foreground md:text-5xl">
+          <span className="inline-flex items-center gap-2 rounded-md border border-brand/40 px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-brand">
+            <span aria-hidden>//</span> Turnos
+          </span>
+          <h2 className="mt-4 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-foreground md:text-5xl">
             ¿Tu auto necesita atención?
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground md:text-lg">
-            Escribinos por WhatsApp o llamanos: te decimos qué hay que hacer y cuándo podés
-            pasar.
+          <p className="mt-4 max-w-xl text-base text-muted-foreground md:text-lg">
+            Contanos qué falla te está dando y te decimos qué hay que revisar y cuándo podés
+            pasar. Escribinos por WhatsApp o llamanos directo al taller.
           </p>
 
-          <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row">
             <Button
               asChild
               size="lg"
@@ -369,7 +380,7 @@ function CtaBand() {
               asChild
               variant="outline"
               size="lg"
-              className="h-12 rounded-full border-white/80 bg-white/70 px-7 font-semibold hover:bg-white"
+              className="h-12 rounded-full border-white/20 bg-white/10 px-7 font-semibold hover:bg-white/20"
             >
               <a href={`tel:${SITE.phoneTel}`}>
                 <Phone className="size-5" />
@@ -378,9 +389,13 @@ function CtaBand() {
             </Button>
           </div>
 
-          <p className="mt-6 font-display text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          <p className="mt-6 font-mono text-[13px] uppercase tracking-wider text-muted-foreground">
             {SITE.hours} · {SITE.hoursClosed}
           </p>
+        </div>
+
+        <div className="relative flex justify-center md:justify-end">
+          <FlyerPoster />
         </div>
       </motion.div>
     </section>
@@ -393,11 +408,11 @@ function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/70 bg-white/55 backdrop-blur-md">
+    <footer className="border-t border-white/10 bg-white/5 backdrop-blur-md">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-3 md:py-12">
         <div>
           <div className="flex items-center gap-2.5">
-            <img src={logo} alt="" className="size-10 rounded-[10px] shadow-sm" />
+            <img src={logo} alt="" className="size-10 rounded-[10px] ring-1 ring-white/15 shadow-sm" />
             <span className="font-display text-xl font-bold uppercase tracking-wide text-foreground">
               Mecánica <span className="text-brand">Waly</span>
             </span>
@@ -455,7 +470,7 @@ function Footer() {
               href={SITE.whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-deep"
+              className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:bg-brand-deep"
             >
               <MessageCircle className="size-4" />
               WhatsApp
@@ -464,7 +479,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/70 py-5 text-center text-xs text-muted-foreground">
+      <div className="border-t border-white/10 py-5 text-center font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
         © {year} {SITE.name} · {SITE.address}
       </div>
     </footer>
@@ -477,16 +492,21 @@ export default function Landing() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="min-h-screen">
-        {/* Fondo luminoso con manchas frías y un toque de rojo */}
-        <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-b from-[#f8fbff] via-[#eef4fb] to-[#e6eff9]">
-          <div className="absolute -left-32 -top-28 size-[30rem] rounded-full bg-sky-300/45 blur-3xl" />
-          <div className="absolute -right-40 top-1/3 size-[34rem] rounded-full bg-indigo-200/45 blur-3xl" />
-          <div className="absolute -bottom-40 left-1/4 size-[28rem] rounded-full bg-rose-200/55 blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 size-[22rem] rounded-full bg-cyan-200/45 blur-3xl" />
+        {/* Fondo oscuro tipo asfalto con manchas de color y grilla técnica */}
+        <div
+          aria-hidden
+          className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(180deg,#0b0e16_0%,#0d111c_45%,#0a0d15_100%)]"
+        >
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]" />
+          <div className="absolute -left-32 -top-28 size-[30rem] rounded-full bg-[#ef3b46]/25 blur-3xl" />
+          <div className="absolute -right-40 top-1/3 size-[34rem] rounded-full bg-cyan-400/20 blur-3xl" />
+          <div className="absolute -bottom-40 left-1/4 size-[28rem] rounded-full bg-violet-500/20 blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 size-[22rem] rounded-full bg-amber-400/15 blur-3xl" />
         </div>
 
         <Header />
         <Hero />
+        <BrandBanner />
 
         <Ticker />
 
@@ -504,7 +524,7 @@ export default function Landing() {
           target="_blank"
           rel="noreferrer"
           aria-label="Escribir por WhatsApp"
-          className="fixed bottom-5 right-5 z-50 inline-flex size-14 items-center justify-center rounded-full bg-brand text-white shadow-[0_16px_34px_-12px_rgba(225,29,46,0.9)] ring-4 ring-white/70 transition hover:scale-105 hover:bg-brand-deep"
+          className="fixed bottom-5 right-5 z-50 inline-flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_16px_34px_-12px_rgba(225,29,46,0.9)] ring-4 ring-white/15 transition hover:scale-105 hover:bg-brand-deep"
         >
           <MessageCircle className="size-6" />
         </a>

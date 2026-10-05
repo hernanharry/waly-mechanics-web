@@ -45,24 +45,24 @@
 /* CHANGE VALUES FOR THEME */
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.972 0.013 232);
-  --foreground: oklch(0.3 0.035 255);
-  --card: oklch(1 0 0 / 0.6);
-  --card-foreground: oklch(0.3 0.035 255);
-  --popover: oklch(1 0 0 / 0.9);
-  --popover-foreground: oklch(0.3 0.035 255);
+  --background: oklch(0.17 0.022 262);
+  --foreground: oklch(0.96 0.008 240);
+  --card: oklch(0.22 0.025 262 / 0.6);
+  --card-foreground: oklch(0.96 0.008 240);
+  --popover: oklch(0.2 0.024 262 / 0.95);
+  --popover-foreground: oklch(0.96 0.008 240);
   --primary: oklch(0.577 0.245 27.325);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.95 0.016 235);
-  --secondary-foreground: oklch(0.33 0.035 255);
-  --muted: oklch(0.95 0.014 235);
-  --muted-foreground: oklch(0.5 0.032 258);
-  --accent: oklch(0.94 0.02 235);
-  --accent-foreground: oklch(0.33 0.035 255);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.27 0.03 262);
+  --secondary-foreground: oklch(0.95 0.01 240);
+  --muted: oklch(0.27 0.03 262);
+  --muted-foreground: oklch(0.74 0.02 250);
+  --accent: oklch(0.3 0.06 230);
+  --accent-foreground: oklch(0.95 0.01 240);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.91 0.016 235 / 0.8);
-  --input: oklch(0.91 0.016 235 / 0.8);
-  --ring: oklch(0.577 0.245 27.325 / 0.55);
+  --border: oklch(1 0 0 / 0.12);
+  --input: oklch(1 0 0 / 0.14);
+  --ring: oklch(0.68 0.21 26 / 0.7);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -125,13 +125,14 @@
   }
 }
 
-/* --- Mecánica Waly: condensed display type + racing red brand tokens --- */
+/* --- Mecánica Waly: condensed display type, mono technical labels, racing red --- */
 @theme {
   --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Barlow Condensed", "Arial Narrow", ui-sans-serif, sans-serif;
-  --color-brand: oklch(0.577 0.245 27.325);
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-brand: oklch(0.68 0.21 26);
   --color-brand-deep: oklch(0.47 0.2 27.325);
-  --color-brand-soft: oklch(0.965 0.024 20);
+  --color-brand-soft: oklch(0.32 0.09 25);
 }
 
 @layer base {
@@ -142,40 +143,47 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    background-image: radial-gradient(
+        1200px 600px at 85% -10%,
+        rgb(239 63 70 / 0.12),
+        transparent 60%
+      ),
+      radial-gradient(900px 500px at -10% 30%, rgb(34 211 238 / 0.1), transparent 60%);
+    background-attachment: fixed;
   }
   ::selection {
     background: color-mix(in oklab, var(--primary) 25%, transparent);
   }
 }
 
-/* --- Glassmorphism surfaces (light, cool, layered) --- */
+/* --- Glassmorphism surfaces: dark, colorful, technical --- */
 @layer components {
   .glass {
-    background-color: rgb(255 255 255 / 0.55);
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
-    border: 1px solid rgb(255 255 255 / 0.7);
+    background-color: rgb(15 19 30 / 0.62);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid rgb(255 255 255 / 0.12);
     box-shadow:
-      0 14px 34px -16px rgb(15 40 85 / 0.28),
-      inset 0 1px 0 rgb(255 255 255 / 0.9);
+      0 20px 44px -20px rgb(0 0 0 / 0.7),
+      inset 0 1px 0 rgb(255 255 255 / 0.1);
   }
   .glass-strong {
-    background-color: rgb(255 255 255 / 0.78);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgb(255 255 255 / 0.85);
+    background-color: rgb(11 14 23 / 0.85);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid rgb(255 255 255 / 0.16);
     box-shadow:
-      0 18px 40px -18px rgb(15 40 85 / 0.3),
-      inset 0 1px 0 rgb(255 255 255 / 0.95);
+      0 24px 50px -22px rgb(0 0 0 / 0.75),
+      inset 0 1px 0 rgb(255 255 255 / 0.14);
   }
   .glass-soft {
-    background-color: rgb(255 255 255 / 0.4);
-    backdrop-filter: blur(10px) saturate(140%);
-    -webkit-backdrop-filter: blur(10px) saturate(140%);
-    border: 1px solid rgb(255 255 255 / 0.6);
+    background-color: rgb(255 255 255 / 0.05);
+    backdrop-filter: blur(10px) saturate(130%);
+    -webkit-backdrop-filter: blur(10px) saturate(130%);
+    border: 1px solid rgb(255 255 255 / 0.1);
     box-shadow:
-      0 8px 24px -14px rgb(15 40 85 / 0.24),
-      inset 0 1px 0 rgb(255 255 255 / 0.75);
+      0 10px 26px -16px rgb(0 0 0 / 0.6),
+      inset 0 1px 0 rgb(255 255 255 / 0.08);
   }
 }
 

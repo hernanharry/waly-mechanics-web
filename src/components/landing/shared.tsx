@@ -1,5 +1,36 @@
+import { useState, type ReactNode } from "react";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+/**
+ * Muestra una foto real desde /public si existe; si el archivo todavía no está,
+ * renderiza el placeholder (fallback) sin romper el layout.
+ * Colocar las imágenes en public/photos/ con estos nombres:
+ * banner-logo.jpg, flyer.jpg, interior.jpg, local.jpg, calle.jpg, entrada.jpg
+ */
+export function Photo({
+  src,
+  alt,
+  className,
+  fallback,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  fallback: ReactNode;
+}) {
+  const [failed, setFailed] = useState(false);
+  if (failed) return <>{fallback}</>;
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      className={className}
+      onError={() => setFailed(true)}
+    />
+  );
+}
 
 /** Estrellas con soporte de valor parcial (ej. 4,6 de 5). */
 export function Stars({
@@ -26,7 +57,7 @@ export function Stars({
       role="img"
       aria-label={`${rating} sobre 5 estrellas`}
     >
-      {row("text-slate-300")}
+      {row("text-white/25")}
       <span
         className="absolute inset-y-0 left-0 overflow-hidden text-amber-400"
         style={{ width: `${percent}%` }}
@@ -37,7 +68,7 @@ export function Stars({
   );
 }
 
-/** Encabezado de sección: chip + título condensado + bajada. */
+/** Encabezado de sección: etiqueta monoespaciada + título condensado + bajada. */
 export function SectionHeading({
   eyebrow,
   title,
@@ -51,8 +82,8 @@ export function SectionHeading({
 }) {
   return (
     <div className={cn("max-w-2xl", align === "center" && "mx-auto text-center")}>
-      <span className="inline-flex items-center gap-2 rounded-full border border-brand/25 bg-brand-soft/70 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-brand">
-        <span className="size-1.5 rounded-full bg-brand" />
+      <span className="inline-flex items-center gap-2 rounded-md border border-brand/40 px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-brand">
+        <span aria-hidden>//</span>
         {eyebrow}
       </span>
       <h2 className="mt-4 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-foreground md:text-5xl">

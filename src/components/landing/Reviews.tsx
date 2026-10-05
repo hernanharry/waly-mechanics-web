@@ -8,11 +8,13 @@ const HIGHLIGHTS = [
     icon: ShieldCheck,
     title: "Honestidad",
     text: "Lo que más se destaca del taller: claridad sobre el trabajo que hace falta.",
+    chip: "bg-brand-soft text-brand",
   },
   {
     icon: Handshake,
     title: "Atención de Walter",
     text: "Trato directo con el dueño del taller en cada visita.",
+    chip: "bg-amber-400/15 text-amber-300",
   },
 ];
 
@@ -52,7 +54,7 @@ export function Reviews() {
 
             <div className="my-6 h-px bg-border" />
 
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
               Lo que destacan los clientes
             </p>
             <ul className="mt-4 space-y-3">
@@ -61,9 +63,11 @@ export function Reviews() {
                 return (
                   <li
                     key={item.title}
-                    className="flex items-start gap-3 rounded-2xl border border-white/70 bg-white/55 p-3.5"
+                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-3.5"
                   >
-                    <span className="mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
+                    <span
+                      className={`mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-xl ${item.chip}`}
+                    >
                       <Icon className="size-5" />
                     </span>
                     <span>
@@ -81,7 +85,7 @@ export function Reviews() {
               href={SITE.mapsUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-brand-deep"
+              className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-white"
             >
               Ver reseñas en Google Maps
               <ArrowUpRight className="size-4" />
@@ -97,24 +101,24 @@ export function Reviews() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5, delay: 0.1 + index * 0.08, ease: "easeOut" }}
-                className="flex flex-col rounded-3xl border-2 border-dashed border-slate-400/50 bg-white/35 p-6 backdrop-blur-md"
+                className="flex flex-col rounded-3xl border-2 border-dashed border-slate-500/50 bg-white/5 p-6 backdrop-blur-md"
               >
                 <Quote className="size-6 text-slate-400" />
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-500">
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-400">
                   Espacio para una reseña real de Google: pegá acá el texto del cliente.
                 </p>
                 <div className="mt-6 flex items-center gap-3">
-                  <span className="grid size-9 place-items-center rounded-full border border-dashed border-slate-300 bg-white/70 text-xs font-bold text-slate-400">
+                  <span className="grid size-9 place-items-center rounded-full border border-dashed border-slate-600 bg-white/10 text-xs font-bold text-slate-400">
                     ?
                   </span>
                   <span>
-                    <span className="block text-sm font-semibold text-slate-500">
+                    <span className="block text-sm font-semibold text-slate-300">
                       Nombre del cliente
                     </span>
                     <Stars rating={0} starClassName="size-3.5" />
                   </span>
                 </div>
-                <span className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">
+                <span className="mt-4 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400">
                   {label} · pendiente
                 </span>
               </motion.div>

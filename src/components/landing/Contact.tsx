@@ -48,14 +48,14 @@ export function Contact() {
                 const Icon = row.icon;
                 const body = (
                   <>
-                    <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-2xl border border-brand/20 bg-brand-soft text-brand">
+                    <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-2xl border border-brand/30 bg-brand-soft text-brand">
                       <Icon className="size-5" />
                     </span>
                     <span className="min-w-0">
-                      <span className="block text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                      <span className="block font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                         {row.label}
                       </span>
-                      <span className="block break-words text-base font-semibold text-foreground md:text-lg">
+                      <span className="block break-words font-mono text-base font-medium text-foreground md:text-lg">
                         {row.value}
                       </span>
                       {row.sub && (
@@ -68,7 +68,7 @@ export function Contact() {
                 return (
                   <li
                     key={row.label}
-                    className="flex items-start gap-4 rounded-2xl border border-white/70 bg-white/55 p-4 transition hover:bg-white/75"
+                    className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:border-white/20 hover:bg-white/10"
                   >
                     {row.href ? (
                       <a href={row.href} className="flex items-start gap-4">
@@ -97,7 +97,7 @@ export function Contact() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="h-12 flex-1 rounded-full border-white/80 bg-white/65 px-6 font-semibold hover:bg-white"
+                className="h-12 flex-1 rounded-full border-white/20 bg-white/10 px-6 font-semibold hover:bg-white/20"
               >
                 <a href={`tel:${SITE.phoneTel}`}>
                   <Phone className="size-5" />
@@ -115,7 +115,7 @@ export function Contact() {
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             className="rounded-3xl glass p-3 md:p-4"
           >
-            <div className="overflow-hidden rounded-2xl border border-white/80 bg-white/60">
+            <div className="overflow-hidden rounded-2xl border border-white/15 bg-white/10">
               <iframe
                 title={`Ubicación de ${SITE.name} — ${SITE.address}`}
                 src={SITE.mapsEmbedUrl}
@@ -125,12 +125,12 @@ export function Contact() {
               />
             </div>
             <div className="flex flex-wrap items-center justify-between gap-3 px-2 pb-1 pt-4">
-              <p className="text-sm font-semibold text-foreground">{SITE.address}</p>
+              <p className="font-mono text-[13px] text-foreground">{SITE.address}</p>
               <a
                 href={SITE.mapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/80 bg-white/70 px-4 py-2 text-sm font-semibold text-brand transition hover:bg-white"
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-brand transition hover:bg-white/20"
               >
                 Cómo llegar
                 <ArrowUpRight className="size-4" />
