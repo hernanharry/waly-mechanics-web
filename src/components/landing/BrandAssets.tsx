@@ -78,7 +78,7 @@ export function BrandBanner() {
     <section aria-label="Banner de Mecánica Waly" className="px-4 pb-4 md:pb-6">
       <div className="mx-auto max-w-6xl">
         <Photo
-          src="photos/banner-logo.jpg"
+          src="photos/banner-logo.png"
           alt="Banner de Mecánica Waly: velocímetro y servicios del taller"
           className="w-full rounded-[2rem] border border-white/12 object-cover"
           fallback={<BannerRecreation />}
@@ -137,7 +137,7 @@ function PosterRecreation() {
 export function FlyerPoster() {
   return (
     <Photo
-      src="photos/flyer.jpg"
+      src="photos/flyer.png"
       alt="Afiche de Mecánica Waly con servicios y teléfono"
       className="w-full max-w-[300px] rounded-[1.75rem] border border-white/12 object-cover"
       fallback={<PosterRecreation />}

@@ -406,16 +406,29 @@ function CtaBand() {
 
 function Footer() {
   const year = new Date().getFullYear();
+  const [brandOk, setBrandOk] = useState(true);
 
   return (
     <footer className="border-t border-white/10 bg-white/5 backdrop-blur-md">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-3 md:py-12">
         <div>
           <div className="flex items-center gap-2.5">
-            <img src={logo} alt="" className="size-10 rounded-[10px] ring-1 ring-white/15 shadow-sm" />
-            <span className="font-display text-xl font-bold uppercase tracking-wide text-foreground">
-              Mecánica <span className="text-brand">Waly</span>
-            </span>
+            {brandOk ? (
+              /* Logo real del taller: fondo negro puro, se funde con mix-blend-screen */
+              <img
+                src="photos/logo.png"
+                alt="Mecánica Waly"
+                onError={() => setBrandOk(false)}
+                className="h-11 w-auto mix-blend-screen"
+              />
+            ) : (
+              <>
+                <img src={logo} alt="" className="size-10 rounded-[10px] ring-1 ring-white/15 shadow-sm" />
+                <span className="font-display text-xl font-bold uppercase tracking-wide text-foreground">
+                  Mecánica <span className="text-brand">Waly</span>
+                </span>
+              </>
+            )}
           </div>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Taller mecánico especializado en suspensión, frenos, embrague e inyección

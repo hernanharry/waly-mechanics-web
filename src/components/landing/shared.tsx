@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 /**
  * Muestra una foto real desde /public si existe; si el archivo todavía no está,
  * renderiza el placeholder (fallback) sin romper el layout.
- * Colocar las imágenes en public/photos/ con estos nombres:
- * banner-logo.jpg, flyer.jpg, interior.jpg, local.jpg, calle.jpg, entrada.jpg
+ * Imágenes reales cargadas en public/photos/ con estos nombres:
+ * banner-logo.png, flyer.png, interior.png, local.png, calle.png, entrada.png, logo.png
  */
 export function Photo({
   src,
